@@ -146,9 +146,7 @@ class DACModel(PreTrainedModel):
     
 
     def apply_weight_norm(self):
-        weight_norm = nn.utils.weight_norm
-        if hasattr(nn.utils.parametrizations, "weight_norm"):
-            weight_norm = nn.utils.parametrizations.weight_norm
+        weight_norm = nn.utils.parametrizations.weight_norm
 
         def _apply_weight_norm(module):
             if isinstance(module, nn.Conv1d) or isinstance(module, nn.ConvTranspose1d):
