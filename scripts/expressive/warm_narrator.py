@@ -35,7 +35,7 @@ parent_folder = os.path.basename(curr_dir)
 output_dir = os.path.join(curr_dir, OUTPUTS, parent_folder)
 os.makedirs(output_dir, exist_ok=True)
 script_name = os.path.splitext(os.path.basename(__file__))[0]
-file_name = script_name + "_" + "large" if model_type == ModelType.LARGE else "mini"
+file_name = script_name + "_" + ("large" if model_type == ModelType.LARGE else "mini")
 
 i = 1
 while True:
