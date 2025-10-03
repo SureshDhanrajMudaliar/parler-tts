@@ -12,7 +12,7 @@ class ModelType(Enum):
     MINI = auto()
     LARGE = auto()
 
-model_type = ModelType.LARGE
+model_type = ModelType.MINI
 model_name = "parler-tts/parler-tts-large-v1" if model_type == ModelType.LARGE else "parler-tts/parler-tts-mini-v1"
 
 model = ParlerTTSForConditionalGeneration.from_pretrained(model_name).to(device)
