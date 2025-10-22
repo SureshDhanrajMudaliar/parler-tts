@@ -34,12 +34,22 @@ attention_mask = desc_tokens["attention_mask"].to(device)
 prompt_attention_mask = prompt_tokens["attention_mask"].to(device)
 
 # Pass attention_mask explicitly
+# generation = model.generate(
+#     input_ids=input_ids,
+#     prompt_input_ids=prompt_input_ids,
+#     attention_mask=attention_mask,
+#     prompt_attention_mask=prompt_attention_mask,
+# )
+
 generation = model.generate(
-    input_ids=input_ids,
-    prompt_input_ids=prompt_input_ids,
-    attention_mask=attention_mask,
-    prompt_attention_mask=prompt_attention_mask,
+    **{
+        "input_ids": input_ids,
+        "attention_mask": attention_mask,
+        "prompt_input_ids": prompt_input_ids,
+        "prompt_attention_mask": prompt_attention_mask,
+    }
 )
+
 
 audio_arr = generation.cpu().numpy().squeeze()
 
